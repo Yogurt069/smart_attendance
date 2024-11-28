@@ -20,7 +20,7 @@ if connection:
             sr_number INT AUTO_INCREMENT PRIMARY KEY,
             registration_number VARCHAR(20) UNIQUE NOT NULL,
             full_name VARCHAR(100) NOT NULL,
-            attendance VARCHAR(20) DEFAULT "Absent"
+            attendance_status VARCHAR(20) DEFAULT "Absent"
         )
     """)
     print("Database and table created successfully.")
