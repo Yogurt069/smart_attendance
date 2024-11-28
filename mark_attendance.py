@@ -1,7 +1,6 @@
 import pymysql
 import os
 
-# Establish MySQL connection
 conn = pymysql.connect(
     host="localhost",
     user="root",
@@ -11,7 +10,6 @@ conn = pymysql.connect(
 try:
     cursor = conn.cursor()
 
-    # Path to the file containing attendance data
     file_path = 'user_registration.txt'
 
     if os.path.exists(file_path):
@@ -24,11 +22,9 @@ try:
         for line in lines:
             registration_number, attendance_status = line.split(': ')
             
-            # SQL query to update attendance
             sql = "UPDATE attendance SET attendance_status = %s WHERE registration_number = %s"
             cursor.execute(sql, (attendance_status, registration_number))
         
-    # Commit the changes to the database
         conn.commit()
         print("Attendance updated successfully.")
     else:
