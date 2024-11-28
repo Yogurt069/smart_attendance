@@ -1,7 +1,7 @@
 import pymysql
 import os
 
-# Establish MySQL connection using pymysql
+# Establish MySQL connection
 conn = pymysql.connect(
     host="localhost",
     user="root",
@@ -14,13 +14,11 @@ try:
     # Path to the file containing attendance data
     file_path = 'user_registration.txt'
 
-    # Check if the file exists
     if os.path.exists(file_path):
-        # Read the file content
         with open(file_path, 'r') as file:
             attendance_data = file.read()
 
-        # Split the data by lines and process each line
+        
         lines = attendance_data.strip().split('\n')
 
         for line in lines:

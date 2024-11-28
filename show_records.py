@@ -1,6 +1,6 @@
 import pymysql
 
-# Replace with your MySQL credentials
+
 connection = pymysql.connect(
     host="localhost",
     user="root",
@@ -13,8 +13,6 @@ try:
         print("Connected to MySQL server")
         cursor = connection.cursor()
 
-
-        # Fetch all rows to verify insertion
         cursor.execute("SELECT * FROM attendance")
         rows = cursor.fetchall()
 

@@ -1,10 +1,9 @@
 import pymysql
 
-# Replace with your MySQL credentials
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="auto1976bot"
+    password="auto1976bot" #My mysql password; 
 )
 
 
@@ -12,7 +11,7 @@ if connection:
     print("Connected to MySQL server")
     cursor = connection.cursor()
 
-    # Step 1: Create the Database and Table
+    #Creating the Database and Table
     cursor.execute("CREATE DATABASE IF NOT EXISTS attendance_db")
     cursor.execute("USE attendance_db")
     cursor.execute("""

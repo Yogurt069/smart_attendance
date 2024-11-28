@@ -5,7 +5,7 @@ import pymysql
 import os
 import numpy as np
 
-# Load the trained face recognizer model and label dictionary
+
 model_path = 'face_model.yml'
 label_dict_path = 'label_dict.json'
 registration_file = 'user_registration.txt'  # File to store registration number
@@ -17,25 +17,23 @@ try:
     with open(label_dict_path, 'r') as f:
         label_dict = json.load(f)
     
-    # Reverse the label dictionary to map numbers back to names
+    
     label_dict_reversed = {v: k for k, v in label_dict.items()}
 
 except Exception as e:
     print(f"Error loading model or label dictionary: {e}")
     exit()
 
-# Initialize face detector
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-# Start video capture
 cam = cv2.VideoCapture(1)
 
-print("Starting face recognition for 15 seconds...")
+print("Starting face recognition for 5 seconds...")
 start_time = time.time()
-lowest_confidence = float('inf')  # Initialize with a very high value
+lowest_confidence = float('inf') 
 lowest_confidence_name = "Unknown"
 
-while time.time() - start_time < 15:  # Scan for 15 seconds
+while time.time() - start_time < 5:  # Scan for 5 seconds
     ret, frame = cam.read()
     if not ret:
         print("Failed to access camera. Exiting...")
@@ -46,12 +44,11 @@ while time.time() - start_time < 15:  # Scan for 15 seconds
 
     for (x, y, w, h) in faces:
         face_img = gray[y:y + h, x:x + w]
-        face_img_resized = cv2.resize(face_img, (400, 400))  # Match training size
+        face_img_resized = cv2.resize(face_img, (400, 400))
         
         # Predict the label of the face
         label, confidence = face_recognizer.predict(face_img_resized)
         
-        # Map the label back to the name
         name = label_dict_reversed.get(label, "Unknown")
         
         # Display the label and confidence on the frame
@@ -68,7 +65,6 @@ while time.time() - start_time < 15:  # Scan for 15 seconds
     if cv2.waitKey(1) == 27:
         break
 
-# Release resources
 cam.release()
 cv2.destroyAllWindows()
 
@@ -94,8 +90,8 @@ else:
     print("No recognized faces.")
 
 
+#marking the attendance of the given registration number;
 
-# Establish MySQL connection using pymysql
 conn = pymysql.connect(
     host="localhost",
     user="root",
