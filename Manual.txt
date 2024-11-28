@@ -1,0 +1,28 @@
+Hi! This file is here to assist you in understanding the process;
+
+1. Go to directory start-from-here and then run 'create-table.py' program, this will create a new mysql db.
+
+2. Come back to our original directory fill and then open 'students.txt'. Here you will see some registration
+   number with Names.
+   Now run 'add_data.py', this program will add the registration number and Name to the database;
+
+3. If you want to register your face or update your face. Run 'dubli.py' this program will use your camera (of
+   laptop or any other device connected with access of camera) and will ask the user for his registration number
+   and name. So do the input, your face model will get saved in 'face_model.yml' file.
+
+   NOTE // This face registration will only be done once or when you want to update your face model.
+
+4. Now Finally run 'main.py', this program will turn use the camera (of laptop or any) and will write the least 
+   confident face-model's registration number and ask the user whether it's him or not?
+   if the user replies yes it will mark present in the attendance or else will return error and will ask the user to 
+   try again, or check or update the face model.
+
+5. If you want to check the attendance record you can run 'show_records.py' .
+
+NOTE // IN 'main.py' AND 'dubli.py' SET cam = cv2.VideoCapture(1) TO cam = cv2.VideoCapture(0) IF YOU'RE USING 
+        LAPTOP'S CAMERA;
+     //
+
+
+you can contact me by mail
+sujitkshatriya1976ga@gmail.com

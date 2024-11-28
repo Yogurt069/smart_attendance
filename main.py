@@ -100,22 +100,19 @@ conn = pymysql.connect(
 )
 cursor = conn.cursor()
 
-# Path to the file containing attendance data
+
 file_path = 'user_registration.txt'
 
-# Check if the file exists
+
 if os.path.exists(file_path):
-    # Read the file content
     with open(file_path, 'r') as file:
         attendance_data = file.read()
-
-    # Split the data by lines and process each line
+  
     lines = attendance_data.strip().split('\n')
 
     for line in lines:
         registration_number, attendance_status = line.split(': ')
         
-        # SQL query to update attendance
         sql = "UPDATE attendance SET attendance_status = %s WHERE registration_number = %s"
         cursor.execute(sql, (attendance_status, registration_number))
     
@@ -125,6 +122,5 @@ if os.path.exists(file_path):
 else:
     print(f"The file {file_path} does not exist.")
 
-# Close the connection
 cursor.close()
 conn.close()
